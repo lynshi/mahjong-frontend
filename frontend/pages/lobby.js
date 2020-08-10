@@ -1,37 +1,37 @@
-import Head from 'next/head'
-import styles from '../styles/preGame.css'
+import styles from '../styles/PreGame.module.css';
 
 export default function Lobby() {
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Mahjong</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+        <head>
+            <title>Mahjong</title>
+            <link rel="icon" href="/favicon.ico" />
+        </head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Let's play Mahjong!
-        </h1>
+        <main className={styles.main}>
+            <p className={styles.title}>
+                Waiting for players to join...
+            </p>
+            <p className={styles.description}>
+                Room code: 
+            </p>
+            <div className={styles.playerListWrapper}>
+                <p className={styles.description}>Players</p>
+                <div className={styles.playerGrid}>
+                    <p className={styles.player}>Judy</p>
+                    <p className={styles.player}>Lyndon</p>
+                    <p className={styles.player}>Wew</p>
+                    <p className={styles.player}>Pew</p>
+                </div>
+            </div>
+            <button href="/game" class="bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed">
+                Start
+            </button>
+        </main>
 
-        <p className={styles.description}>
-          Don't know how to play? Check out the <a href="/rules" className={styles.description}> rules</a> here!
-        </p>
-
-        <div className={styles.grid}>
-          <a href="/create_room" className={styles.card}>
-            <h3>New Room</h3>
-          </a>
-
-          <a href="/join_room" className={styles.card}>
-            <h3>Join a Room</h3>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-          Placeholder footer{' '}
-      </footer>
+        <footer className={styles.footer}>
+            Placeholder footer{' '}
+        </footer>
     </div>
   )
 }
