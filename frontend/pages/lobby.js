@@ -1,5 +1,7 @@
 import Link from 'next/link';
 
+import Container from '../components/util/container';
+
 import Description from '../components/util/description';
 import Layout from '../components/util/layout';
 import Title from '../components/util/title';
@@ -7,7 +9,7 @@ import Title from '../components/util/title';
 export default function Lobby() {
     return (
         <Layout footer={true}>
-            <div className="flex flex-col justify-center align-center">
+            <Container>
                 <Title>
                     Waiting for players to join...
                 </Title>
@@ -32,7 +34,7 @@ export default function Lobby() {
                         </button>
                     </Link>
                 </div>
-            </div>
+            </Container>
         </Layout>
     )
 }
