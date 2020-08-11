@@ -1,37 +1,38 @@
-import styles from '../styles/PreGame.module.css';
+import Link from 'next/link';
+
+import Description from '../components/util/description';
+import Layout from '../components/util/layout';
+import Title from '../components/util/title';
 
 export default function Lobby() {
-  return (
-    <div className={styles.container}>
-        <head>
-            <title>Mahjong</title>
-            <link rel="icon" href="/favicon.ico" />
-        </head>
-
-        <main className={styles.main}>
-            <p className={styles.title}>
-                Waiting for players to join...
-            </p>
-            <p className={styles.description}>
-                Room code: 
-            </p>
-            <div className={styles.playerListWrapper}>
-                <p className={styles.description}>Players</p>
-                <div className={styles.playerGrid}>
-                    <p className={styles.player}>Judy</p>
-                    <p className={styles.player}>Lyndon</p>
-                    <p className={styles.player}>Wew</p>
-                    <p className={styles.player}>Pew</p>
+    return (
+        <Layout footer={true}>
+            <div className="flex flex-col justify-center align-center">
+                <Title>
+                    Waiting for players to join...
+                </Title>
+                <Description>
+                    Room code:
+                </Description>
+                <div className="flex flex-col justify-center items-center py-5 px-0">
+                    <div className="mt-12">
+                        <Description>
+                            Players
+                        </Description>
+                        <div className="flex items-center justify-center flex-wrap border-solid border-black border-2 rounded-xl mb-12">
+                            <p className="m-2 text-center w-3/5">Judy</p>
+                            <p className="m-2 text-center w-3/5">Lyndon</p>
+                            <p className="m-2 text-center w-3/5">Wew</p>
+                            <p className="m-2 text-center w-3/5">Pew</p>
+                        </div>
+                    </div>
+                    <Link href="/game">
+                        <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed">
+                            Start
+                        </button>
+                    </Link>
                 </div>
             </div>
-            <button href="/game" class="bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed">
-                Start
-            </button>
-        </main>
-
-        <footer className={styles.footer}>
-            Placeholder footer{' '}
-        </footer>
-    </div>
-  )
+        </Layout>
+    )
 }

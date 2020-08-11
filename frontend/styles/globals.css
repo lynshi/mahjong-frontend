@@ -2,7 +2,6 @@
 @tailwind base;
 @tailwind components;
 /* purgecss end ignore */
-@tailwind utilities;
 
 html,
 body {
@@ -20,3 +19,5 @@ a {
 * {
   box-sizing: border-box;
 }
+
+@tailwind utilities;

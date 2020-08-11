@@ -1,8 +1,8 @@
-import Link from 'next/link'
+import Link from 'next/link';
 
-import Layout from '../components/util/layout'
-import Title from '../components/util/title'
-import Description from '../components/util/description'
+import Layout from '../components/util/layout';
+import Title from '../components/util/title';
+import Description from '../components/util/description';
 
 export default function Home() {
   return (
