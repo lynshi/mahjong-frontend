@@ -1,18 +1,20 @@
 import Link from 'next/link'
 
 import Layout from '../components/util/layout'
+import Title from '../components/util/title'
+import Description from '../components/util/description'
 
 export default function Home() {
   return (
     <Layout footer={true}>
         <div className="flex flex-col justify-center align-center">
-            <h1 className="m-0 leading-1.15 text-6xl">
+            <Title>
                 Let's play Mahjong!
-            </h1>
+            </Title>
 
-            <p className="text-center leading-normal text-2xl">
+            <Description>
                 Don't know how to play? Check out the <a href="/rules" className="text-blue-500"> rules</a> here!
-            </p>
+            </Description>
 
             <div className="flex flex-col items-center justify-center flex-wrap my-12">
                 <Link href="/create_room">
