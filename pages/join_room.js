@@ -54,8 +54,8 @@ export default function JoinRoom() {
         <Container>
             <form onSubmit={handleSubmit}>
                 <div className="flex flex-col justify-center items-center py-5 px-0">
-                    <TextInput value={roomCode} onChange={handleUpdate} placeholder="Room Code" />
-                    <TextInput value={name} onChange={handleUpdate} placeholder="Your Name" />
+                    <TextInput name="roomCodeInput" value={roomCode} onChange={handleUpdate} placeholder="Room Code" />
+                    <TextInput name="nameInput" value={name} onChange={handleUpdate} placeholder="Your Name" />
                     <SubmitButton isActive={isActive}>Submit</SubmitButton>
                 </div>
             </form>

@@ -36,7 +36,7 @@ export default function CreateRoom() {
                     <Description className="mt-4"> 
                         Your room code: 
                     </Description>
-                    <TextInput value={name} onChange={handleUpdate} placeholder="Your Name" />
+                    <TextInput name="nameInput" value={name} onChange={handleUpdate} placeholder="Your Name" />
                     <SubmitButton isActive={isActive}>Submit</SubmitButton>
                 </div>
             </form>
