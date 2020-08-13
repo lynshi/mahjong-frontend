@@ -1,20 +1,64 @@
-import Link from 'next/link';
+import React, {useState} from "react";
+import { useRouter } from 'next/router'
 
-import Container from '../components/util/container';
+import Container from '../components/util/Container';
+import SubmitButton from "../components/util/SubmitButton";
+import TextInput from "../components/util/TextInput";
+
 
 export default function JoinRoom() {
+    const router = useRouter()
+
+    const [name, setName] = useState("");
+    const [roomCode, setRoomCode] = useState("");
+    const [isActive, isButtonActive] = useState(false);
+
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+        if (name != "" && roomCode != "") {
+            router.push("/lobby")
+        }
+    }
+
+    const handleUpdate = (evt) => {
+        validateSubmitButton(evt);
+
+        switch(evt.target.name) {
+            case "roomCodeInput": 
+                setRoomCode(evt.target.value);
+                break;
+            case "nameInput":
+                setName(evt.target.value);
+                break;
+        }
+    }
+
+    const validateSubmitButton = (evt) => {
+        let isValid = false; 
+        switch(evt.target.name) {
+            case "roomCodeInput": 
+                if (name != "" && evt.target.value != "") {
+                    isValid = true;
+                }
+                break;
+            case "nameInput": 
+                if (roomCode != "" && evt.target.value != "") {
+                    isValid = true;
+                }
+                break;
+        }
+        isButtonActive(isValid);
+    }
+
     return (
         <Container>
-            <div className="flex flex-col justify-center items-center py-5 px-0">
-                <input className="mt-4 bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4" placeholder="Room Code" />
-                <input className="mt-4 bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4" placeholder="Your Name" />
-
-                <Link href="/lobby">
-                    <button className="mt-3 bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed">
-                        Submit
-                    </button>
-                </Link>
-            </div>
+            <form onSubmit={handleSubmit}>
+                <div className="flex flex-col justify-center items-center py-5 px-0">
+                    <TextInput value={roomCode} onChange={handleUpdate} placeholder="Room Code" />
+                    <TextInput value={name} onChange={handleUpdate} placeholder="Your Name" />
+                    <SubmitButton isActive={isActive}>Submit</SubmitButton>
+                </div>
+            </form>
         </Container>
     )
 }

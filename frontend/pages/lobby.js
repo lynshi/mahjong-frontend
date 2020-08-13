@@ -1,12 +1,25 @@
-import Link from 'next/link';
+import React, {useState} from "react";
+import { useRouter } from 'next/router'
 
 import Container from '../components/util/container';
 
 import Description from '../components/util/description';
 import Layout from '../components/util/layout';
 import Title from '../components/util/title';
+import SubmitButton from '../components/util/SubmitButton';
 
 export default function Lobby() {
+    const router = useRouter()
+
+    const [playersReady, arePlayersPresent] = useState(false);
+
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+        if (playersReady) {
+            router.push("/game")
+        }
+    }
+
     return (
         <Layout footer={true}>
             <Container>
@@ -28,11 +41,9 @@ export default function Lobby() {
                             <p className="m-2 text-center w-3/5">Pew</p>
                         </div>
                     </div>
-                    <Link href="/game">
-                        <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed">
-                            Start
-                        </button>
-                    </Link>
+                    <form onSubmit={handleSubmit}>
+                        <SubmitButton isActive={playersReady}>Start</SubmitButton>
+                    </form>
                 </div>
             </Container>
         </Layout>

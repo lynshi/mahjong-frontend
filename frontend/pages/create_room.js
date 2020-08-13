@@ -1,23 +1,45 @@
-import Link from 'next/link';
+import React, {useState} from "react";
+import { useRouter } from 'next/router'
 
-import Container from '../components/util/container';
-import Description from '../components/util/description';
+import Container from '../components/util/Container';
+import Description from '../components/util/Description';
+import SubmitButton from "../components/util/SubmitButton";
+import TextInput from "../components/util/TextInput";
+
 
 export default function CreateRoom() {
+    const router = useRouter()
+
+    const [name, setName] = useState("");
+    const [isActive, isButtonActive] = useState(false);
+
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+        if (name != "") {
+            router.push("/lobby")
+        }
+    }
+
+    const handleUpdate = (evt) => {
+        if (evt.target.value != "") {
+            isButtonActive(true);
+        } else {
+            isButtonActive(false);
+        }
+        setName(evt.target.value)
+    }
+
     return (
         <Container>
-            <div className="flex flex-col justify-center items-center py-5 px-0">
-                <Description className="mt-4">
-                    Your room code:
-                </Description>
-                <input className="mt-4 bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4" placeholder="Your Name" />
-
-                <Link href="/lobby">
-                    <button className="mt-3 bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed">
-                        Submit
-                    </button>
-                </Link>
-            </div>
+            <form onSubmit={handleSubmit}>
+                <div className="flex flex-col justify-center items-center py-5 px-0">
+                    <Description className="mt-4"> 
+                        Your room code: 
+                    </Description>
+                    <TextInput value={name} onChange={handleUpdate} placeholder="Your Name" />
+                    <SubmitButton isActive={isActive}>Submit</SubmitButton>
+                </div>
+            </form>
         </Container>
     )
 }

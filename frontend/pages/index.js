@@ -19,12 +19,12 @@ export default function Home() {
 
             <div className="flex flex-col items-center justify-center flex-wrap my-12">
                 <Link href="/create_room">
-                    <button className="w-2/5 mt-3 mb-12 bg-transparent hover:bg-blue-500 font-semibold hover:text-white py-2 px-4 border border-grey-300 hover:border-blue-500 rounded">
+                    <button className="w-1/3 mt-3 mb-6 bg-transparent hover:bg-blue-500 font-semibold hover:text-white py-2 px-4 border-2 border-grey-300 hover:border-blue-500 rounded">
                         New Room
                     </button>
                 </Link>
                 <Link href="/join_room">
-                    <button className="w-2/5 mt-3 mb-12 bg-transparent hover:bg-blue-500 font-semibold hover:text-white py-2 px-4 border border-grey-300 hover:border-blue-500 rounded">
+                    <button className="w-1/3 mt-3 mb-6 bg-transparent hover:bg-blue-500 font-semibold hover:text-white py-2 px-4 border-2 border-grey-300 hover:border-blue-500 rounded">
                         Join a Room
                     </button>
                 </Link>
